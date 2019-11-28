@@ -1,4 +1,7 @@
 {
+    "cocur/slugify": {
+        "version": "v3.2"
+    },
     "czproject/git-php": {
         "version": "v3.17.0"
     },
