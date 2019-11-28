@@ -1,4 +1,7 @@
 {
+    "czproject/git-php": {
+        "version": "v3.17.0"
+    },
     "monolog/monolog": {
         "version": "2.0.1"
     },
