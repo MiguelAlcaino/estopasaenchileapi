@@ -18,9 +18,10 @@ RUN apk update \
 
 RUN git config --global user.email "pinerarenuncia@example.com"
 RUN git config --global user.name "Pinera renuncia zwei"
-RUN cd /var/www/app && composer install
+
 CMD ["php-fpm", "-F"]
 
 WORKDIR /var/www/app
+RUN composer install
 
 EXPOSE 9000
