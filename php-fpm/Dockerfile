@@ -22,6 +22,5 @@ RUN git config --global user.name "Pinera renuncia zwei"
 CMD ["php-fpm", "-F"]
 
 WORKDIR /var/www/app
-RUN composer install
 
 EXPOSE 9000
