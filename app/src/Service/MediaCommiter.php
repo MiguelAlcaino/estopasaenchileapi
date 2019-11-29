@@ -19,15 +19,24 @@ class MediaCommiter
     /** @var Slugify */
     private $slugify;
 
+    /** @var VideoDictionaryEditor */
+    private $videoDictionaryEditor;
+
     /** @var string */
     private $repositoryPath;
 
-    public function __construct(LoggerInterface $logger, GitRepository $gitRepository, Slugify $slugify, string $repositoryPath)
-    {
-        $this->logger         = $logger;
-        $this->gitRepository  = $gitRepository;
-        $this->slugify        = $slugify;
-        $this->repositoryPath = $repositoryPath;
+    public function __construct(
+        LoggerInterface $logger,
+        GitRepository $gitRepository,
+        Slugify $slugify,
+        VideoDictionaryEditor $videoDictionaryEditor,
+        string $repositoryPath
+    ) {
+        $this->logger                = $logger;
+        $this->gitRepository         = $gitRepository;
+        $this->slugify               = $slugify;
+        $this->videoDictionaryEditor = $videoDictionaryEditor;
+        $this->repositoryPath        = $repositoryPath;
     }
 
     public function addAndCommitMedia(string $mediaUrl, string $description): void
@@ -35,11 +44,15 @@ class MediaCommiter
         $this->logger->debug('The name of the file received is:' . $mediaUrl);
         $this->logger->debug('Description: ' . $description);
 
-        $filename = $this->repositoryPath . '/assets/videos/' . $this->slugify->slugify($description) . '.mp4';
+        $mediaFileName = $this->slugify->slugify($description) . '.mp4';
+
+        $filename = $this->repositoryPath . '/assets/videos/' . $mediaFileName;
 
         file_put_contents($filename, fopen($mediaUrl, 'rb'));
 
-        $this->gitRepository->addFile($filename);
+        $this->videoDictionaryEditor->addMediaToDictionary($mediaFileName, $description);
+
+        $this->gitRepository->addAllChanges();
         $this->gitRepository->commit($description);
     }
 }

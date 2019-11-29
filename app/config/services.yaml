@@ -35,3 +35,7 @@ services:
     App\Service\MediaCommiter:
         arguments:
             $repositoryPath: '%repository_path%'
+
+    App\Service\VideoDictionaryEditor:
+        arguments:
+            $repositoryPath: '%repository_path%'
