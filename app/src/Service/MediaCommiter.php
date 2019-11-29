@@ -53,6 +53,6 @@ class MediaCommiter
         $this->videoDictionaryEditor->addMediaToDictionary($mediaFileName, $description);
 
         $this->gitRepository->addAllChanges();
-        $this->gitRepository->commit($description);
+        // $this->gitRepository->commit($description);
     }
 }
