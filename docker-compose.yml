@@ -1,0 +1,21 @@
+version: '2'
+services:
+    php:
+        build: ./php-fpm
+        environment:
+            HOST_REPOSITORY_PATH: ${HOST_REPOSITORY_PATH}
+            CONTAINER_REPOSITORY_PATH: ${CONTAINER_REPOSITORY_PATH}
+        volumes:
+            - ./app:/var/www/app
+            - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
+            - ${HOST_REPOSITORY_PATH}:${CONTAINER_REPOSITORY_PATH}
+
+    web:
+        image: nginx:latest
+        ports:
+            - "8888:80"
+        volumes:
+            - ./app:/var/www/app
+            - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - php
