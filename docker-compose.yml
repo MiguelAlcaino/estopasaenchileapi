@@ -5,6 +5,7 @@ services:
         environment:
             HOST_REPOSITORY_PATH: ${HOST_REPOSITORY_PATH}
             CONTAINER_REPOSITORY_PATH: ${CONTAINER_REPOSITORY_PATH}
+            APP_ENV: ${APP_ENV}
         volumes:
             - ./app:/var/www/app
             - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
