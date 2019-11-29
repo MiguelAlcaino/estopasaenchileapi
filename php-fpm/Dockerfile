@@ -13,12 +13,12 @@ RUN apk update \
     && echo "xdebug.remote_port=10000" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    #&& curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
+    && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && rm -rf /tmp/*
 
 RUN git config --global user.email "pinerarenuncia@example.com"
 RUN git config --global user.name "Pinera renuncia zwei"
-
+RUN cd /var/www/app && composer install
 CMD ["php-fpm", "-F"]
 
 WORKDIR /var/www/app
