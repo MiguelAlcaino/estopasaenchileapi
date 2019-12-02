@@ -29,9 +29,6 @@ services:
 
     Cocur\Slugify\Slugify: ~
 
-    Cz\Git\GitRepository:
-        - '%repository_path%'
-
     App\Service\MediaCommiter:
         arguments:
             $repositoryPath: '%repository_path%'

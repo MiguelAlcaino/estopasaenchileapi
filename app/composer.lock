@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e15993c245c876613e0b83209dbb9b84",
+    "content-hash": "5d2bb96980ff209d0ed9baa7619a1cec",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -70,48 +70,6 @@
                 "slugify"
             ],
             "time": "2019-01-31T20:38:55+00:00"
-        },
-        {
-            "name": "czproject/git-php",
-            "version": "v3.17.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/czproject/git-php.git",
-                "reference": "a7b911b81a2fe626f748a4ac8955353c5777bc6c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/czproject/git-php/zipball/a7b911b81a2fe626f748a4ac8955353c5777bc6c",
-                "reference": "a7b911b81a2fe626f748a4ac8955353c5777bc6c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "nette/tester": "^1.1"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Jan Pecha",
-                    "email": "janpecha@email.cz"
-                }
-            ],
-            "description": "Library for work with Git repository in PHP.",
-            "keywords": [
-                "git"
-            ],
-            "time": "2019-02-09T13:11:36+00:00"
         },
         {
             "name": "monolog/monolog",
