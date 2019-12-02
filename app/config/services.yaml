@@ -4,7 +4,9 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    repository_path: '%env(resolve:CONTAINER_REPOSITORY_PATH)%'
+    env(FILENAME_LENGTH): 80
+    repository_path: '%env(CONTAINER_REPOSITORY_PATH)%'
+    filename_length: '%env(int:FILENAME_LENGTH)%'
 
 services:
     # default configuration for services in *this* file
@@ -32,6 +34,7 @@ services:
     App\Service\MediaCommiter:
         arguments:
             $repositoryPath: '%repository_path%'
+            $fileNameLength: '%filename_length%'
 
     App\Service\VideoDictionaryEditor:
         arguments:

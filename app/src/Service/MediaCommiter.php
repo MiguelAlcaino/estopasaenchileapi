@@ -18,14 +18,23 @@ class MediaCommiter
     /** @var VideoDictionaryEditor */
     private $videoDictionaryEditor;
 
+    /** @var int */
+    private $fileNameLength;
+
     /** @var string */
     private $repositoryPath;
 
-    public function __construct(LoggerInterface $logger, Slugify $slugify, VideoDictionaryEditor $videoDictionaryEditor, string $repositoryPath)
-    {
+    public function __construct(
+        LoggerInterface $logger,
+        Slugify $slugify,
+        VideoDictionaryEditor $videoDictionaryEditor,
+        int $fileNameLength,
+        string $repositoryPath
+    ) {
         $this->logger                = $logger;
         $this->slugify               = $slugify;
         $this->videoDictionaryEditor = $videoDictionaryEditor;
+        $this->fileNameLength        = $fileNameLength;
         $this->repositoryPath        = $repositoryPath;
     }
 
@@ -34,7 +43,7 @@ class MediaCommiter
         $this->logger->debug('The name of the file received is:' . $mediaUrl);
         $this->logger->debug('Description: ' . $description);
 
-        $mediaFileName = $this->slugify->slugify($description) . '.mp4';
+        $mediaFileName = substr($this->slugify->slugify($description), 0, $this->fileNameLength) . '.mp4';
 
         $filename = $this->repositoryPath . '/assets/videos/' . $mediaFileName;
 
