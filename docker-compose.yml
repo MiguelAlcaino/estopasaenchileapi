@@ -14,6 +14,7 @@ services:
             - ${HOST_REPOSITORY_PATH}:${CONTAINER_REPOSITORY_PATH}
 
     web:
+        restart: unless-stopped
         image: nginx:latest
         ports:
             - "8888:80"
