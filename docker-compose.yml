@@ -2,6 +2,7 @@ version: '2'
 services:
     php:
         build: ./php-fpm
+        restart: unless-stopped
         environment:
             HOST_REPOSITORY_PATH: ${HOST_REPOSITORY_PATH}
             CONTAINER_REPOSITORY_PATH: ${CONTAINER_REPOSITORY_PATH}
